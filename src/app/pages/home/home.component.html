@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Dashboard: Hardware Items</h2>
+    <div class="row g-4">
+        <div class="col-md-4" *ngFor="let item of itemList">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">ID: {{ item.id }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Name: {{ item.itName }}</h6>
+                    <p class="card-text">
+                        <strong>Rental per Day:</strong> {{ item.rentalPerDay }}<br>
+                        <strong>Fine Per Day:</strong> {{ item.finePerDay }}<br>
+                        <strong>Available:</strong> {{ item.status }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary btn-sm w-100">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

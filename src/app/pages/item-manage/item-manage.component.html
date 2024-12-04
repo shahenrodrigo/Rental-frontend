@@ -1,0 +1,108 @@
+<div>
+    <h2 style="text-align: center;">HARDWARE ITEM </h2>
+</div>
+<div class="container" style="justify-content: center; margin-top: 2rem;">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name"
+            [(ngModel)]="item.itName">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Rental per Day</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""
+            [(ngModel)]="item.rentalPerDay">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Fine Per Day</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""
+            [(ngModel)]="item.finePerDay">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Availability</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="available / not available"
+            [(ngModel)]="item.status">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3" (click)="addItem()">Add Item</button>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Rental per Day</th>
+                        <th scope="col">Fine Per Day</th>
+                        <th scope="col">Available</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of itemList; index as i">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item.id}}</td>
+                        <td>{{item.itName}}</td>
+                        <td>{{item.rentalPerDay}}</td>
+                        <td>{{item.finePerDay}}</td>
+                        <td>{{item.status}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm me-2" style="border-radius: 50%;"
+                                (click)="deleteItemById(item.id)">
+                                Delete
+                            </button>
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="updateItem(item)">
+                                Update
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">ID</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="itemTem.id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="itemTem.itName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Rental per Day</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="itemTem.rentalPerDay">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Fine Per Day</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="itemTem.finePerDay">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Availability</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="itemTem.status">
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn btn-primary"
+                    (click)="saveItem()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

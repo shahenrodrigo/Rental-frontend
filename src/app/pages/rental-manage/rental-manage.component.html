@@ -1,0 +1,105 @@
+<div>
+    <h2 style="text-align: center;">RENTAL</h2>
+</div>
+<div class="container" style="justify-content: center; margin-top: 2rem;">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Rental Date</label>
+        <input type="date" id="date" class="form-control" placeholder="" [(ngModel)]="rental.rentalDate">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Return Date</label>
+        <input type="date" id="date" class="form-control" placeholder="" [(ngModel)]="rental.returnDate">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Due Date</label>
+        <input type="date" id="date" class="form-control" placeholder="" [(ngModel)]="rental.dueDate">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Total Cost</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="LKR."
+            [(ngModel)]="rental.cost">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3" (click)="addRental()">Add Rental</button>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Rental Date</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Total Cost</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rental of rentalList; index as i">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{rental.id}}</td>
+                        <td>{{rental.rentalDate}}</td>
+                        <td>{{rental.returnDate}}</td>
+                        <td>{{rental.dueDate}}</td>
+                        <td>{{rental.cost}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm me-2" style="border-radius: 50%;"
+                                (click)="deleteRentalById(rental.id)">
+                                Delete
+                            </button>
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="updateRental(rental)">
+                                Update
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Rental</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">ID</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="rentalTem.id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Rental Date</label>
+                        <input type="date" id="date" class="form-control" [(ngModel)]="rentalTem.rentalDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Return Date</label>
+                        <input type="date" id="date" class="form-control" [(ngModel)]="rentalTem.returnDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Due Date</label>
+                        <input type="date" id="date" class="form-control" [(ngModel)]="rentalTem.dueDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Total Cost</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="rentalTem.cost">
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn btn-primary"
+                    (click)="saveRental()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
